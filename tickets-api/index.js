@@ -10,6 +10,6 @@ RouteBuilder.build(app);
 
 app.use(express.json())
 
-app.set('port', 4040)
+app.set('port', 5555)
 console.log('Server listening on port', app.get('port'))
 app.listen(app.get('port'))

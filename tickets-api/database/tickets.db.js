@@ -10,7 +10,7 @@ class TicketsDatabase extends Database{
     }
 
     async getAllTickets(){
-        const query = `SELECT id,iduser,idtarget,categorietarget,categorie,content,isdone FROM tickets`;
+        const query = `SELECT * FROM tickets`;
         const result = await sqlite.all(query).catch(function(err){
             console.error(err);
             return null;
@@ -39,6 +39,7 @@ class TicketsDatabase extends Database{
     async initialiseTable(){
         const query = 'CREATE TABLE IF NOT EXISTS tickets (' +
                       'id INTEGER PRIMARY KEY AUTOINCREMENT,'+
+                      'label TEXT NOT NULL,'+ 
                       'price INTEGER NOT NULL,'+
                       'sold BOOLEAN NOT NULL)';
         await sqlite.run(query).catch(function(err){

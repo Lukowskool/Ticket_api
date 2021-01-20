@@ -12,10 +12,10 @@ class UserDatabase extends Database{
     
     async initialiseTable(){
         const query = 'CREATE TABLE IF NOT EXISTS users (' +
-                    'id INTEGER PRIMARY KEY AUTOINCREMENT,'+
-                    'firstname TEXT NOT NULL,'+
-                    'lastname TEXT NOT NULL,'+
-                    'email TEXT NOT NULL UNIQUE)';
+                      'id INTEGER PRIMARY KEY AUTOINCREMENT,'+
+                      'firstname TEXT NOT NULL,'+
+                      'lastname TEXT NOT NULL,'+
+                      'email TEXT NOT NULL UNIQUE)';
 
         await sqlite.run(query).catch(function(err){
             console.error(err );
