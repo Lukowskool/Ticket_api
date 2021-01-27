@@ -2,16 +2,16 @@
 
 const sqlite = require("aa-sqlite")
 
-const Database = require("./database")
+const Database = require("../../../application/index.sqlite")
 
-class UserDatabase extends Database{  
+class CustomerDatabase extends Database{  
     constructor(){
         super()
         this.initialiseTable()
     }
     
     async initialiseTable(){
-        const query = 'CREATE TABLE IF NOT EXISTS users (' +
+        const query = 'CREATE TABLE IF NOT EXISTS customer (' +
                       'id INTEGER PRIMARY KEY AUTOINCREMENT,'+
                       'firstname TEXT NOT NULL,'+
                       'lastname TEXT NOT NULL,'+
@@ -21,9 +21,18 @@ class UserDatabase extends Database{
             console.error(err );
         });
     }
+
+    async add(id, firstname, lastname, email){
+        const query = `INSERT OR REPLACE INTO customer (id, firstname, lastname, email) ` + 
+                      `VALUES (${id}, ${firstname}, ${lastname}, ${email})`; 
+
+        await sqlite.run(query).catch(function(err){
+            console.error(err );
+        });
+    }
     
-    async getUsers(){
-        const query = "SELECT * from users";
+    async getCustomers(){
+        const query = "SELECT * from customer";
         const result = await sqlite.all(query).catch(function(err){
             console.error(err);
         });
@@ -31,7 +40,7 @@ class UserDatabase extends Database{
     }
 
     async getById(id){
-        let query = `SELECT * FROM users WHERE ID = ${id}`;
+        let query = `SELECT * FROM customer WHERE ID = ${id}`;
         const result = await sqlite.get(query).catch(function(err){
             console.error(err);
         });
@@ -39,7 +48,7 @@ class UserDatabase extends Database{
     }
 
     async getByEmail(email){
-        let query = `SELECT * FROM users WHERE EMAIL = '${email}'`;
+        let query = `SELECT * FROM customer WHERE EMAIL = '${email}'`;
         const result =  await sqlite.get(query).catch(function(err){
             console.error(err);
         });
@@ -47,4 +56,4 @@ class UserDatabase extends Database{
     }
     
 }
-module.exports = new UserDatabase();
+module.exports = new CustomerDatabase();

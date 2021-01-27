@@ -1,5 +1,5 @@
 'use strict'
-class User{  
+class Customer{  
     id;
     firstname;
     lastname;

@@ -1,7 +1,7 @@
 'use strict'
 
 const sqlite = require("aa-sqlite");
-const Database = require("./database")
+const Database = require("../../../application/index.sqlite")
 
 class MailDatabase extends Database{  
     constructor(){
