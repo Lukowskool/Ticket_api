@@ -29,15 +29,19 @@ router.get('/:id/tickets', async(req, res)=>{
 })
 
 router.get('/:id/responses', async(req, res)=>{
-    //return all tickets for 1 user with response for each
+    const customerId = parseInt(req.params.id);
+    const result = await findTicketsUseCase.getResponses(customerId);
+    if(result){
+        res.status(200).json({
+            result
+        })
+    }else{
+        res.status(404)
+    }
 })
 
 router.post('/:id/response', async(req, res)=>{
     //response for 1 ticket
-})
-
-router.post('/:id/responses', async(req, res)=>{
-    //response for many tickets
 })
 
 module.exports = router;

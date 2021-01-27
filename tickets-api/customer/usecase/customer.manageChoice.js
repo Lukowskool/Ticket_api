@@ -7,8 +7,8 @@ const ResponseController = require('../../response/infra/controller/response.con
 class CustomerManageChoiceUseCase{  
     constructor(){}
 
-    async addOrUpdateChoice(){
-        //getChoices
+    async addOrUpdateChoice(customerId, ticketId, choice){
+
     }
 
     async getChoices(){

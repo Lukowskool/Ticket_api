@@ -6,11 +6,15 @@ class TicketsController{
     constructor(){}
 
     async getAll(){
-        return Persistency.getAllTickets() 
+        return await Persistency.getAllTickets() 
     }
 
     async getByCustomer(customerId){
-        return Persistency.getByCustomer(customerId) 
+        return await Persistency.getByCustomer(customerId) 
     }
+
+    async getTicketOwner(ticketId){
+        return await Persistency.getTicketOwner(ticketId)
+    } 
 }
 module.exports = new TicketsController();

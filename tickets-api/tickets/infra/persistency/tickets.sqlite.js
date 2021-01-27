@@ -28,6 +28,15 @@ class TicketsDatabase extends Database{
         return result;
     }
 
+    async getTicketOwner(ticketId){
+        const query = `SELECT customerId FROM tickets where id = ${ticketId}`;
+        const result = await sqlite.all(query).catch(function(err){
+            console.error(err);
+            return -1;
+        });
+        return result;
+    }
+
     async add(id, price, customerId){
         const query = `INSERT OR REPLACE INTO tickets (id, customerId, price) VALUES (${id},${customerId}, ${price})` ;
         await sqlite.run(query).catch(function(err){
