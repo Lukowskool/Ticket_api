@@ -3,12 +3,14 @@ class Response{
     customerId;
     ticketId;
     date;
-    answer;
-    constructor(id, customerId, ticketId, date, answer){
+    choice;
+    current;
+    constructor(id, customerId, ticketId, date, choice, current){
         this.id = id;
         this.customerId = customerId;
         this.ticketId = ticketId;
         this.date = date;
-        this.answer = answer;
+        this.choice = choice;
+        this.current = current;
     }
 }

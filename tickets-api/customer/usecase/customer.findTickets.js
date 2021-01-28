@@ -1,6 +1,6 @@
 'use strict'
 
-const CustomerController = require('../infra/controller/customer.controller');
+const ResponseController = require('../../response/infra/controller/response.controller');
 const TicketsController = require('../../tickets/infra/controller/tickets.controller');
 
 class CustomerFindTicketsUseCase{  
@@ -8,6 +8,10 @@ class CustomerFindTicketsUseCase{
 
     async getAll(customerId){
         return await TicketsController.getByCustomer(customerId)
+    } 
+
+    async getResponses(customerId){
+        return await ResponseController.getCurrentByCustomer(customerId)
     } 
 
 }
