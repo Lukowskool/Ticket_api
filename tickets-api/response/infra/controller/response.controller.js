@@ -24,5 +24,18 @@ class ResponseController{
     async deleteAll(){
         return await Persistency.deleteAll()
     } 
+
+    async add(customerId, ticketId){
+        return await Persistency.addOrUpdate(customerId, ticketId, 0);
+    }
+
+    async updateChoice(id, customerId, ticketId, choice){
+        let res =  await Persistency.addOrUpdate(customerId, ticketId, choice);
+        if(res){
+            Persistency.updateCurrency(ticketId);
+            return true;
+        } 
+        return false;
+    } 
 }
 module.exports = new ResponseController();
