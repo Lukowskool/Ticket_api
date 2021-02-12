@@ -11,7 +11,7 @@ class CustomerManageChoiceUseCase{
     constructor(){}
 
     async UpdateChoice(customerId, ticketId, choice){
-        
+
     }
 
     async getChoices(customerId){

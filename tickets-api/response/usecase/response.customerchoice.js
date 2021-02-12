@@ -10,11 +10,11 @@ class ResponseCustomerManageChoiceUseCase{
     }
 
     async updateChoice(id, customerId, ticketId, choice){
-        return await ResponseController
+        return await ResponseController.updateChoice(id, customerId, ticketId, choice)
     } 
 
-    async getChoices(){
-        
+    async getChoices(customerId){
+        return await ResponseController.getCurrentByCustomer(customerId)
     } 
 
 }
