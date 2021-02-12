@@ -9,7 +9,7 @@ class TicketCheckAccessUseCase{
         let res = await TicketsController.getTicketOwner(ticketId);
         if(res == customerId)return true;
         return false;
-    } 
+    }
 
 }
 module.exports = new TicketCheckAccessUseCase();
