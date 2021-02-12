@@ -13,6 +13,10 @@ class ResponseController{
         return await Persistency.getHistory()
     } 
 
+    async getByCustomer(customerId){
+        return await Persistency.getByCustomer(customerId)
+    } 
+
     async getCurrentByCustomer(customerId){
         return await Persistency.getCurrentByCustomer(customerId)
     } 

@@ -11,7 +11,7 @@ class CustomerServiceManageChoiceUseCase{
     constructor(){}
 
     deleteAllChoices(){
-        return await ResponseController.deleteAll()
+        return ResponseController.deleteAll()
     } 
 
     getAllChoices(){

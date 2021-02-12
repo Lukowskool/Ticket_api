@@ -15,7 +15,7 @@ class CustomerManageChoiceUseCase{
     }
 
     async getChoices(customerId){
-        const responses = await ResponseController.getHistoryByCustomer(customerId);
+        const responses = await ResponseController.getByCustomer(customerId);
         const tickets = await TicketsController.getByCustomer(customerId)
         if(responses != undefined){
             let res = []; 
