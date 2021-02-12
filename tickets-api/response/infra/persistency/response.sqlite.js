@@ -11,9 +11,9 @@ class ResponseDatabase extends Database{
     }
 
     async addOrUpdate(customerId, ticketId, choice){
-        let date = Date.now().toLocaleString()
-        const query = `INSERT INTO tickets (customerId, ticketId, date, choice) ` + 
-                      `VALUES (${customerId},${ticketId}, ${date}, ${choice})` ;
+        let date = Date.now().toString()
+        const query = `INSERT INTO response (customerId, ticketId, date, choice, current) ` + 
+                      `VALUES (${customerId},${ticketId}, ${date}, ${choice}, 1)` ;
         await sqlite.run(query).catch(function(err){
             console.error(err );
         }); 

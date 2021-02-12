@@ -29,10 +29,10 @@ class ResponseController{
         return await Persistency.addOrUpdate(customerId, ticketId, 0);
     }
 
-    async updateChoice(id, customerId, ticketId, choice){
+    async updateChoice(customerId, ticketId, choice){
+        await Persistency.updateCurrency(ticketId);
         let res =  await Persistency.addOrUpdate(customerId, ticketId, choice);
         if(res){
-            Persistency.updateCurrency(ticketId);
             return true;
         } 
         return false;
